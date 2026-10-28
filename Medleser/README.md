@@ -26,7 +26,9 @@ Medleser er laget for studenter med dysleksi, lese- og skrivevansker og andre fu
 
 ## Kom i gang
 
-Installasjon og systemkrav: se [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md).
+For brukere: se [Installasjonsveiledning](veiledninger/Installasjonsveiledning.md) og [Brukerveiledning](veiledninger/Brukerveiledning.md). De bygges som PDF med `scripts/make_guides.py` og følger med installasjonsfilen.
+
+For utviklere: se [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md).
 
 ### Kort brukerveiledning
 
@@ -43,7 +45,7 @@ Installasjon og systemkrav: se [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md).
 ## Kjente begrensninger (versjon 1.0)
 
 - **Kvalitet:**
-  - Kvaliteten på stemmene er ikke vurdert systematisk ved lytting. Hør en prøve.
+  - Stemmene er ikke vurdert systematisk ved lytting. Av de norske er «Norsk (Talesyntese)» prøvd og anbefalt. Hør en prøve.
   - Tekstuttrekk fra kompliserte PDF-er (flere spalter med figurer, matematiske formler) og OCR kan gi feil. Teksten kan rettes på arbeidsflaten.
   - Tabeller oppdages i PDF bare når de har tydelig struktur. Usikre tabeller merkes.
 - **Opplesning:** Tall og spesialtegn leses slik stemmemotoren tolker dem. Medleser skriver bare vanlige forkortelser fullt ut.
@@ -52,7 +54,7 @@ Installasjon og systemkrav: se [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md).
   - Er bare testet mot et simulert API under utviklingen (ingen betalte kall). En separat test mot det ekte API-et kan slås på, se [TEST_REPORT.md](TEST_REPORT.md).
   - For modellene v3 og v4 er det ikke bekreftet at ordtider leveres. Uten ordtider brukes avsnittsmarkering.
 - **Plattform:** Ingen mobilapp, ingen deling, ingen synkronisering mellom maskiner (se [ROADMAP.md](ROADMAP.md)).
-- **Lisens:** Lisensvalget for Medleser er ikke tatt. Den ferdige appen inneholder AGPL-/GPL-komponenter, se [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
+- **Lisens:** Medleser er laget av Magnus Nohr og lisensiert under GNU AGPL-3.0 (se [LICENSE](../LICENSE)). Tredjepartskomponenter: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
 
 ## Dokumentasjon
 

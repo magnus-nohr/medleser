@@ -4,7 +4,7 @@ Bygger Medleser for Windows:
   2. lager ikonfilen
   3. bygger programmappen dist\Medleser med PyInstaller
   4. kjører selvtest av den ferdige Medleser.exe
-  5. lager installasjonsfilen dist\Medleser-Setup-<versjon>.exe med Inno Setup (hoppes over med -SkipInstaller)
+  5. lager veiledningene som PDF og installasjonsfilen dist\Medleser-Setup-<versjon>.exe med Inno Setup (hoppes over med -SkipInstaller)
 
 Kjør fra prosjektmappen:
   powershell -ExecutionPolicy Bypass -File scripts\build_windows.ps1
@@ -57,6 +57,9 @@ if (-not $SkipInstaller) {
         "C:\Program Files\Inno Setup 6\ISCC.exe"
     ) | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $iscc) { throw "Fant ikke Inno Setup 6 (ISCC.exe). Installer det, eller bruk -SkipInstaller." }
+    Write-Host "== Lager veiledninger (PDF)"
+    & $py scripts\make_guides.py
+    if ($LASTEXITCODE -ne 0) { throw "Veiledningene kunne ikke lages." }
     Write-Host "== Lager installasjonsfil"
     & $iscc installer\medleser.iss
     if ($LASTEXITCODE -ne 0) { throw "Inno Setup feilet." }

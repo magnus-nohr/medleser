@@ -10,7 +10,9 @@ AppId={{6F1C2B9E-6C8A-4C1E-9B7D-3E2A9F4D1A55}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppVerName={#MyAppName} {#MyAppVersion}
-AppPublisher=Medleser
+AppPublisher=Magnus Nohr
+AppPublisherURL=https://github.com/magnus-nohr/medleser
+AppSupportURL=https://github.com/magnus-nohr/medleser/issues
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
@@ -38,9 +40,13 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\dist\Medleser\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\LICENSE"; DestDir: "{app}"; DestName: "LICENSE.txt"; Flags: ignoreversion
+Source: "..\dist\Brukerveiledning.pdf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\dist\Installasjonsveiledning.pdf"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Comment: "Lydbøker og synkronisert medlesing"
+Name: "{autoprograms}\{#MyAppName} – brukerveiledning"; Filename: "{app}\Brukerveiledning.pdf"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]

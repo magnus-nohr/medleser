@@ -42,7 +42,7 @@ Dokumentene, lyden og stemmene dine i `%LOCALAPPDATA%\Medleser` beholdes. Vil du
 
 ```powershell
 winget install -e --id Python.Python.3.13 --scope user
-cd "C:\Lydbok app\Medleser"
+cd "<mappen du klonet til>\Medleser"
 py -3.13 -m venv .venv        # eller: & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 .venv\Scripts\python.exe -m medleser
@@ -54,19 +54,19 @@ py -3.13 -m venv .venv        # eller: & "$env:LOCALAPPDATA\Programs\Python\Pyth
 
 ### Jobbe på flere maskiner (Git og GitHub)
 
-Prosjektet ligger i et Git-repo med roten `C:\Lydbok app`, som også inneholder `CLAUDE.md`. `.venv`, `build`, `dist`, `.devdata` og logger holdes utenfor.
+Prosjektet ligger i et Git-repo der roten også inneholder `LICENSE`, `README.md` og `CLAUDE.md`. `.venv`, `build`, `dist`, `.devdata` og logger holdes utenfor.
 
 På en ny maskin:
 
 ```powershell
 winget install -e --id Git.Git --scope user
 winget install -e --id Python.Python.3.13 --scope user
-git clone https://github.com/<brukernavn>/medleser.git "C:\Lydbok app"
-cd "C:\Lydbok app\Medleser"
+git clone https://github.com/magnus-nohr/medleser.git
+cd "<mappen du klonet til>\Medleser"
 powershell -ExecutionPolicy Bypass -File scripts\setup_dev.ps1
 ```
 
-I Claude kan du i stedet åpne `C:\Lydbok app` og be om: «Les Medleser/STATUS.md og sett opp utviklingsmiljøet.»
+I Claude kan du i stedet åpne den klonede mappen og be om: «Les Medleser/STATUS.md og sett opp utviklingsmiljøet.»
 
 Hver maskin må hente sine egne Piper-stemmer (i appen) og ElevenLabs-nøkkel (veiviseren). Nøkler ligger i Windows Legitimasjonsbehandling og havner aldri i Git.
 

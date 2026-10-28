@@ -13,7 +13,7 @@ VSVersionInfo(
   kids=[
     StringFileInfo([
       StringTable('041404b0', [
-        StringStruct('CompanyName', 'Medleser'),
+        StringStruct('CompanyName', 'Magnus Nohr'),
         StringStruct('FileDescription', 'Medleser – lydbøker og synkronisert medlesing'),
         StringStruct('FileVersion', '1.0.0'),
         StringStruct('InternalName', 'Medleser'),

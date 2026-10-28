@@ -9,9 +9,14 @@ Personvern
 - Tilgangsnøkler lagres kryptert i Windows Legitimasjonsbehandling.
 
 Opphavsrett
-Du er selv ansvarlig for at du har lov til å behandle dokumentene på denne måten, for eksempel pensum du har tilgang til gjennom studiet. Medleser er laget for din egen lesing. Programmet deler ingenting med andre og omgår ikke kopibeskyttelse.
+Du er selv ansvarlig for at du har lov til å behandle dokumentene på denne måten, for eksempel pensum du har tilgang til gjennom studiet. Programmet deler ingenting med andre og omgår ikke kopibeskyttelse.
 
 Installasjon
 Medleser installeres bare for din bruker og trenger ikke administratorrettigheter. Dokumentene dine lagres i %LOCALAPPDATA%\Medleser og beholdes hvis du avinstallerer programmet.
 
+Lisens
+Medleser er laget av Magnus Nohr og er fri programvare under lisensen GNU AGPL-3.0 (se LICENSE.txt i programmappen). Kildekoden finnes på https://github.com/magnus-nohr/medleser.
+
 Medleser bygger på åpen kildekode (blant annet PyMuPDF, Piper og LAME). Se THIRD_PARTY_LICENSES.md i programmappen.
+
+Brukerveiledningen finner du i Start-menyen («Medleser – brukerveiledning»).
