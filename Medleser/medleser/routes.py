@@ -38,6 +38,7 @@ EXTERNAL_LINKS = {
     "elevenlabs_pricing": "https://elevenlabs.io/pricing",
     "elevenlabs_privacy": "https://elevenlabs.io/privacy-policy",
     "elevenlabs_usage": "https://elevenlabs.io/app/subscription",
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
     "piper_project": "https://github.com/OHF-Voice/piper1-gpl",
     "piper_voices": "https://huggingface.co/rhasspy/piper-voices",
     "windows_speech_settings": "ms-settings:speech",

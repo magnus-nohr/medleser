@@ -12,7 +12,7 @@ Flere komponenter har *copyleft*-lisens:
 | piper-tts (inkl. espeak-ng) | GNU GPL-3.0-or-later | Forenlig med AGPL-3.0. Kildekoden må gjøres tilgjengelig. |
 | lameenc (LAME MP3-koder) | GNU LGPL-3.0-or-later | Tillatt å bruke. Endringer i selve biblioteket må deles. |
 
-**Anbefaling:** Lisensier Medleser under GNU AGPL-3.0-or-later, og legg kildekoden ved eller lenk til den når programmet deles. Selve lisensvalget for Medleser er ikke tatt. Det er prosjekteierens beslutning, og Medleser har derfor ingen LICENSE-fil ennå.
+**Medlesers egen lisens:** Medleser er laget av Magnus Nohr og lisensiert under GNU AGPL-3.0-or-later (se `LICENSE`). Kildekoden skal legges ved eller lenkes til når programmet deles.
 
 Ønsker man en mer tillatende lisens for Medleser, kan PyMuPDF byttes ut med `pypdfium2` (Apache-2.0/BSD) og Piper kjøres som et eget program. Se ROADMAP.md.
 

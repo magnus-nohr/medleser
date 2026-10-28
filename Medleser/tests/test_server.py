@@ -258,3 +258,10 @@ def test_save_mp3_dialog_uses_a_file_filter_pywebview_accepts(client, ctx, tmp_p
     assert r.status_code == 200, r.text
     assert r.json()["saved"] == [str(dest.with_suffix(".mp3"))]
     assert dest.with_suffix(".mp3").read_bytes() == b"ID3fake"
+
+
+def test_license_link_opens_the_agpl_text(client, monkeypatch):
+    opened = []
+    monkeypatch.setattr("webbrowser.open", lambda url: opened.append(url))
+    assert client.post("/api/system/open-link", json={"target": "license"}, headers=H).status_code == 200
+    assert opened == ["https://www.gnu.org/licenses/agpl-3.0.html"]

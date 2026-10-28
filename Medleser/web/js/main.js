@@ -97,6 +97,10 @@ async function start() {
     return;
   }
   document.getElementById("app-version").textContent = `Versjon ${state.app.version}`;
+  document.getElementById("license-link").addEventListener("click", (e) => {
+    e.preventDefault();
+    api.post("/api/system/open-link", { target: "license" }).catch(() => {});
+  });
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
     applyUiTheme(state.settings?.app?.ui_theme || "system");
   });

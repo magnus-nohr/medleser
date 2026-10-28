@@ -13,6 +13,7 @@ datas = [
     (str(ROOT / "web"), "web"),
     (str(ROOT / "assets"), "assets"),
     (str(ROOT / "THIRD_PARTY_LICENSES.md"), "."),
+    (str(ROOT.parent / "LICENSE"), "."),
 ]
 # Piper: espeak-ng phoneme data (and small json tables); never the training code.
 datas += collect_data_files("piper", excludes=["train/**", "**/__pycache__/**"])

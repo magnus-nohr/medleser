@@ -127,6 +127,8 @@ export async function renderSettings(main) {
   main.append(el("section", { class: "card", "aria-labelledby": "s-about" },
     el("h2", { id: "s-about" }, "Om Medleser"),
     el("p", {}, `Versjon ${state.app.version}. Laget for studenter med dysleksi og andre lesevansker – og alle andre som vil lytte til fagstoff.`),
+    el("p", {}, "Medleser er laget av Magnus Nohr og er fri programvare under lisensen GNU AGPL-3.0. "
+      + "Alle kan bruke, endre og dele den. Den som deler en endret versjon, må også dele kildekoden. Se filen LICENSE i programmappen."),
     el("p", { class: "small muted" }, "Bygger på åpen kildekode, blant annet Piper (talesyntese), PyMuPDF (PDF), python-docx, FastAPI, pywebview og LAME (MP3). "
       + "Skriftene Atkinson Hyperlegible, Lexend og OpenDyslexic er lisensiert under SIL Open Font License. Se filen THIRD_PARTY_LICENSES.md i programmappen.")));
 

@@ -45,6 +45,6 @@ Git-repo med rot i `C:\Lydbok app` (opprettet 2026-10-28, hovedgren `main`). Det
 1. Kjøre ElevenLabs-integrasjonstestene mot ekte API når brukeren godkjenner det (se TEST_REPORT.md).
 2. Teste med skjermleser (NVDA/Forteller), ekte pensumdokumenter og brukere med dysleksi.
 3. Lytte gjennom og vurdere stemmene. Norsk er gjort (2026-10-28): «Norsk (Talesyntese)» er anbefalt, og NVCC er fjernet. Engelsk, svensk og dansk gjenstår.
-4. Velge lisens for Medleser (AGPL-3.0 anbefales, se THIRD_PARTY_LICENSES.md).
+4. ~~Velge lisens~~ Gjort 2026-10-28: Medleser er laget av Magnus Nohr og lisensiert under GNU AGPL-3.0-or-later (`LICENSE` i repo-roten, følger med i bygget). Vises nederst i menyen og under Innstillinger › Om Medleser.
 5. Kodesignering av exe-filen og installasjonsfilen.
 6. Se ROADMAP.md for videre funksjoner.
