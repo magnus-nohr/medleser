@@ -22,7 +22,7 @@ Den ferdige installasjonsfilen ligger i `dist\Medleser-Setup-1.0.0.exe` (79 MB, 
 
 ## Versjonskontroll
 
-Git-repo med rot i `C:\Lydbok app` (opprettet 2026-10-28, hovedgren `main`). Forfatter er Magnus Nohr <m@hiof.no>, satt lokalt i repoet. Oppsett på en ny maskin står i INSTALL_WINDOWS.md («Jobbe på flere maskiner») og gjøres av `scripts\setup_dev.ps1`.
+Git-repo med rot i `C:\Lydbok app` (opprettet 2026-10-28, hovedgren `main`). Det ligger som privat repo på GitHub: https://github.com/magnus-nohr/medleser (`origin`). Forfatter er Magnus Nohr <m@hiof.no>, satt lokalt i repoet. Oppsett på en ny maskin står i INSTALL_WINDOWS.md («Jobbe på flere maskiner») og gjøres av `scripts\setup_dev.ps1`.
 
 ## Miljø (utviklingsmaskinen)
 
