@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Bygg
+build/
+dist/
+*.log
+
+# Utviklingsdata (dokumenter, lyd, stemmer for testing)
+.devdata/
+
+# Aldri sjekk inn hemmeligheter
+*.key
+.env

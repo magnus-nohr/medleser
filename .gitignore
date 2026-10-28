@@ -1,0 +1,19 @@
+# Medleser – hva som IKKE skal inn i Git (se også Medleser/.gitignore)
+
+# Python-miljø og bygg (lages på nytt på hver maskin)
+Medleser/.venv/
+Medleser/build/
+Medleser/dist/
+__pycache__/
+*.pyc
+*.log
+
+# Utviklingsdata (testdokumenter, lyd, stemmer)
+Medleser/.devdata/
+
+# Lokale Claude-innstillinger (tillatelser er maskinspesifikke)
+.claude/settings.local.json
+
+# Aldri sjekk inn hemmeligheter
+*.key
+.env

@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medleser"
+version = "1.0.0"
+description = "Medleser – lydbøker og synkronisert medlesing for Windows"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "pywebview",
+    "pymupdf",
+    "python-docx",
+    "defusedxml",
+    "piper-tts",
+    "onnx",
+    "lameenc",
+    "miniaudio",
+    "httpx",
+    "keyring",
+    "numpy",
+    "winrt-runtime; sys_platform == 'win32'",
+    "winrt-Windows.Foundation; sys_platform == 'win32'",
+    "winrt-Windows.Foundation.Collections; sys_platform == 'win32'",
+    "winrt-Windows.Globalization; sys_platform == 'win32'",
+    "winrt-Windows.Graphics.Imaging; sys_platform == 'win32'",
+    "winrt-Windows.Media.Core; sys_platform == 'win32'",
+    "winrt-Windows.Media.Ocr; sys_platform == 'win32'",
+    "winrt-Windows.Media.SpeechSynthesis; sys_platform == 'win32'",
+    "winrt-Windows.Storage.Streams; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pyinstaller"]
+
+[project.scripts]
+medleser = "medleser.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["medleser*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m \"not integration\" -p no:cacheprovider"
+filterwarnings = [
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
+markers = [
+    "integration: ekte kall mot betalte tjenester – kjøres bare når det aktiveres uttrykkelig",
+    "windows: krever Windows-API-er (stemmer/OCR)",
+    "slow: tregere tester (lange dokumenter, ekte lokal talesyntese)",
+]

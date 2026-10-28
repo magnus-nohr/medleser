@@ -1,0 +1,17 @@
+﻿Medleser – lydbøker og synkronisert medlesing
+
+Medleser gjør PDF-, Word-, EPUB- og tekstfiler om til tale. Du kan følge teksten på skjermen mens den leses opp, og lagre lyden som MP3.
+
+Personvern
+- Dokumentene behandles på denne datamaskinen.
+- Med gratis lokale stemmer sendes ingenting over internett.
+- Velger du en betalt KI-tjeneste (ElevenLabs), sendes bare tekstbitene som skal leses opp, og bare etter at du har godkjent det.
+- Tilgangsnøkler lagres kryptert i Windows Legitimasjonsbehandling.
+
+Opphavsrett
+Du er selv ansvarlig for at du har lov til å behandle dokumentene på denne måten, for eksempel pensum du har tilgang til gjennom studiet. Medleser er laget for din egen lesing. Programmet deler ingenting med andre og omgår ikke kopibeskyttelse.
+
+Installasjon
+Medleser installeres bare for din bruker og trenger ikke administratorrettigheter. Dokumentene dine lagres i %LOCALAPPDATA%\Medleser og beholdes hvis du avinstallerer programmet.
+
+Medleser bygger på åpen kildekode (blant annet PyMuPDF, Piper og LAME). Se THIRD_PARTY_LICENSES.md i programmappen.

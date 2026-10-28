@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Medleser">
+  <rect width="64" height="64" rx="14" fill="#1F5FAD"/>
+  <path d="M14 18c6-2 12-2 18 2v28c-6-4-12-4-18-2z" fill="#FFFFFF"/>
+  <path d="M50 18c-6-2-12-2-18 2v28c6-4 12-4 18-2z" fill="#DCE8F7"/>
+  <rect x="17" y="25" width="11" height="3" rx="1.5" fill="#FFD84D"/>
+  <path d="M38 27c2 1.6 2 5.4 0 7M42 24c4 3.4 4 9.6 0 13" stroke="#1F5FAD" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+</svg>

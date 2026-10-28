@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medleser</title>
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hopp til hovedinnholdet</a>
+  <div class="app" id="app">
+    <nav class="sidebar" id="sidebar" aria-label="Hovedmeny">
+      <div class="brand">
+        <img src="img/icon.svg" alt="" width="36" height="36">
+        <span class="brand-name">Medleser</span>
+      </div>
+      <ul class="nav-list">
+        <li><a href="#/ny" data-route="ny"><span class="nav-icon" data-icon="upload"></span><span>Nytt dokument</span></a></li>
+        <li><a href="#/dokumenter" data-route="dokumenter"><span class="nav-icon" data-icon="library"></span><span>Mine dokumenter</span></a></li>
+        <li><a href="#/stemmer" data-route="stemmer"><span class="nav-icon" data-icon="voice"></span><span>Stemmer og KI-tjenester</span></a></li>
+        <li><a href="#/innstillinger" data-route="innstillinger"><span class="nav-icon" data-icon="settings"></span><span>Innstillinger</span></a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <p id="app-version" class="muted small"></p>
+      </div>
+    </nav>
+    <main id="main" class="main" tabindex="-1">
+      <p class="loading">Starter Medleser …</p>
+    </main>
+  </div>
+  <div id="status-region" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div id="alert-region" class="visually-hidden" role="alert" aria-live="assertive" aria-atomic="true"></div>
+  <div id="toasts" class="toasts" aria-hidden="true"></div>
+  <noscript>Medleser trenger JavaScript for å fungere.</noscript>
+</body>
+</html>
