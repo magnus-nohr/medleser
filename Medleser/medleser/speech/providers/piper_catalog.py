@@ -69,18 +69,33 @@ _LESSAC_NOTE = (
 )
 
 CATALOG: tuple[CatalogVoice, ...] = (
+    # Recommended after listening tests (2026-10-28): Talesyntese gives clear Norwegian bokmål;
+    # the NVCC dialect voices sounded clearly worse on the same text.
+    CatalogVoice(
+        key="no_NO-talesyntese-medium",
+        path="no/no_NO/talesyntese/medium/",
+        language="nb",
+        name="Norsk (Talesyntese)",
+        description="Én norsk mannsstemme basert på Språkbankens talesyntesemateriale.",
+        license="Opptakene er CC0 (Språkbanken). " + _LESSAC_NOTE,
+        onnx_size=63201294,
+        onnx_md5="9fc876e7edc6593086b4f2f34889f44b",
+        json_size=4880,
+        json_md5="94b938e1bd319e6a084dc8380fb53619",
+        recommended=True,
+        gender="male",
+    ),
     CatalogVoice(
         key="no_NO-nvcc-medium",
         path="no/no_NO/nvcc/medium/",
         language="nb",
         name="Norsk (NVCC, 10 stemmer)",
-        description="Ti norske stemmer (kvinner og menn) fra Språkbankens NVCC-materiale.",
+        description="Ti norske stemmer (kvinner og menn) med ulike dialekter fra Språkbankens NVCC-materiale. Kvaliteten varierer.",
         license="CC0 (fritt materiale fra Språkbanken, Nasjonalbiblioteket). Trent fra bunnen av.",
         onnx_size=76770227,
         onnx_md5="67e04e52b2f195e6db3ae103b58d1710",
         json_size=5397,
         json_md5="eb78dda3e46b97cb184dc6e9b91f64ea",
-        recommended=True,
         speaker_labels={
             "KNN": "KNN",
             "KSV": "KSV",
@@ -93,19 +108,6 @@ CATALOG: tuple[CatalogVoice, ...] = (
             "KMN": "KMN",
             "KNV": "KNV",
         },
-    ),
-    CatalogVoice(
-        key="no_NO-talesyntese-medium",
-        path="no/no_NO/talesyntese/medium/",
-        language="nb",
-        name="Norsk (Talesyntese)",
-        description="Én norsk mannsstemme basert på Språkbankens talesyntesemateriale.",
-        license="Opptakene er CC0 (Språkbanken). " + _LESSAC_NOTE,
-        onnx_size=63201294,
-        onnx_md5="9fc876e7edc6593086b4f2f34889f44b",
-        json_size=4880,
-        json_md5="94b938e1bd319e6a084dc8380fb53619",
-        gender="male",
     ),
     CatalogVoice(
         key="en_GB-cori-medium",

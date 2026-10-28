@@ -12,7 +12,9 @@ const KIND_LABELS = {
 };
 const TYPE_NAMES = { pdf: "PDF", docx: "Word-dokument", epub: "E-bok (EPUB)", txt: "Tekstfil" };
 const CHUNK = 150;
-const CHARS_PER_SECOND = 14; // rough speaking rate, only used for an approximate length
+// Rough speaking rate, only used for an approximate audio length. Measured 17.5 chars/s
+// with Piper «Norsk (Talesyntese)» on a 6 600-character document (2026-10-28).
+const CHARS_PER_SECOND = 17;
 
 function approxMinutes(characters) {
   const minutes = Math.max(1, Math.round(characters / CHARS_PER_SECOND / 60));
@@ -374,7 +376,7 @@ export async function renderWorkspace(main, projectId) {
   }
 
   function summaryText(summary) {
-    return `Opplesningen blir ${formatNumber(summary.characters)} tegn, omtrent ${approxMinutes(summary.characters)}. `
+    return `Opplesningen blir ${formatNumber(summary.characters)} tegn, omtrent ${approxMinutes(summary.characters)} lyd. `
       + `${plural(summary.skipped_blocks, "tekstbit", "tekstbiter")} leses ikke.`;
   }
 
@@ -422,7 +424,7 @@ export async function renderWorkspace(main, projectId) {
       audioCard.append(el("p", {}, `${st.cached_segments} av ${st.total_segments} deler er allerede laget og brukes på nytt.`));
     }
     const est = data.reading_summary;
-    if (est) audioCard.append(el("p", { class: "small muted" }, `Ca. ${approxMinutes(est.characters)} lyd.`));
+    if (est) audioCard.append(el("p", { class: "small muted" }, `Lyden blir omtrent ${approxMinutes(est.characters)} lang.`));
     const label = st.ready ? "Lag lyden på nytt" : st.cached_segments > 0 ? "Fortsett å lage lyd" : "Lag lyd";
     audioCard.append(el("div", { class: "row" }, button(label, { variant: "btn-primary btn-lg", iconName: "sparkle", onClick: startGenerate }),
       st.ready ? button("Åpne medlesing likevel", { onClick: () => navigate(`#/les/${projectId}`) }) : null));
