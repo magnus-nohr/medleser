@@ -24,7 +24,7 @@ Valgfritt:
 
 ### Første gang du bruker Medleser
 
-1. Gå til **Stemmer og KI-tjenester** og trykk **Last ned** ved «Norsk (NVCC, 10 stemmer)» (77 MB). Stemmen virker deretter uten internett. Har Windows allerede stemmen «Jon», kan du også bruke den med en gang.
+1. Gå til **Stemmer og KI-tjenester** og trykk **Last ned** ved «Norsk (Talesyntese)» (63 MB). Stemmen virker deretter uten internett. Har Windows allerede stemmen «Jon», kan du også bruke den med en gang.
 2. Gå til **Nytt dokument**, og dra en PDF inn i vinduet (eller trykk «Velg fil fra datamaskinen»).
 3. Kontroller teksten, velg stemme og trykk **Lag lyd**.
 4. Trykk **Åpne medlesing**, og trykk **Spill av**.

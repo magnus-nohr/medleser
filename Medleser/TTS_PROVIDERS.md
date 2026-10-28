@@ -26,8 +26,7 @@ Medleser har tre fungerende stemmetjenester bak ett felles grensesnitt. Bare tje
 
 | Stemme | Språk | Lisens (datasett) | Merknad |
 |---|---|---|---|
-| `no_NO-nvcc-medium` (anbefalt) | Norsk | CC0 (Språkbanken, NB) | 10 talere, trent fra bunnen av, 77 MB |
-| `no_NO-talesyntese-medium` | Norsk | CC0 (Språkbanken) | Finjustert fra «lessac», som har egne vilkår |
+| `no_NO-talesyntese-medium` (anbefalt) | Norsk | CC0 (Språkbanken) | Finjustert fra «lessac», som har egne vilkår |
 | `en_GB-cori-medium` (anbefalt) | Engelsk (britisk) | Public domain (LibriVox) | Trent fra bunnen av |
 | `en_GB-cori-high` | Engelsk (britisk) | Public domain (LibriVox) | Større (114 MB) |
 | `en_US-kristin-medium` | Engelsk (amerikansk) | Public domain (LibriVox) | Trent fra bunnen av |
@@ -37,7 +36,9 @@ Medleser har tre fungerende stemmetjenester bak ett felles grensesnitt. Bare tje
 
 Stemmer med bare ikke-kommersiell lisens (f.eks. `en_US-hfc_female`, `en_US-ryan`) er utelatt.
 
-**Kvalitet:** Medleser har *ikke* gjort en systematisk, lyttebasert kvalitetsvurdering av stemmene. Appen kaller dem derfor ikke «naturlige» eller «høykvalitets», og ber brukeren høre en stemmeprøve. Talerkodene i NVCC (KNN, KSV, MMN …) vises slik de står i modellen. Medleser har ikke verifisert hva kodene betyr.
+`no_NO-nvcc-medium` (10 dialekttalere) er fjernet fra katalogen 2026-10-28 fordi resultatet var ubrukelig i lyttetest. Mapper med denne stemmen slettes automatisk når Medleser starter (`piper_catalog.RETIRED_KEYS`).
+
+**Kvalitet:** Medleser har *ikke* gjort en systematisk, lyttebasert kvalitetsvurdering av stemmene. Appen kaller dem derfor ikke «naturlige» eller «høykvalitets», og ber brukeren høre en stemmeprøve. Brukeren har lyttet til de norske stemmene (2026-10-28): «Norsk (Talesyntese)» ga klar bokmålsuttale og er anbefalt.
 
 ## 2. Windows-stemmer (OneCore)
 

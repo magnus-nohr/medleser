@@ -27,7 +27,7 @@ Git-repo med rot i `C:\Lydbok app` (opprettet 2026-10-28, hovedgren `main`). Det
 ## Miljø (utviklingsmaskinen)
 
 - Python 3.13.15 (per bruker) og Inno Setup 6.7.3 er installert med winget. Det virtuelle miljøet ligger i `.venv` (`requirements.txt`, `requirements-dev.txt`).
-- Piper-stemmer i `%LOCALAPPDATA%\Medleser\voices\piper`: `no_NO-nvcc-medium` og `en_GB-cori-medium`.
+- Piper-stemmer i `%LOCALAPPDATA%\Medleser\voices\piper`: `no_NO-talesyntese-medium` og `en_GB-cori-medium`.
 - Utviklingsdata ligger i `.devdata` (koblingspunktet `voices` peker til den ekte stemmemappen). Utviklerserveren startes med `scripts\dev_server.py`.
 - Medleser 1.0.0 er testinstallert per bruker i `%LOCALAPPDATA%\Programs\Medleser`. Avinstaller via Innstillinger › Apper.
 - PowerShell kjører i ConstrainedLanguage-modus. Unngå .NET-metodekall i skript, og lagre `.ps1`/`.iss`/`.txt` med UTF-8-BOM (`scripts\add_bom.py`).
@@ -44,7 +44,7 @@ Git-repo med rot i `C:\Lydbok app` (opprettet 2026-10-28, hovedgren `main`). Det
 
 1. Kjøre ElevenLabs-integrasjonstestene mot ekte API når brukeren godkjenner det (se TEST_REPORT.md).
 2. Teste med skjermleser (NVDA/Forteller), ekte pensumdokumenter og brukere med dysleksi.
-3. Lytte gjennom og vurdere stemmene, og eventuelt merke anbefalte stemmer ut fra det.
+3. Lytte gjennom og vurdere stemmene. Norsk er gjort (2026-10-28): «Norsk (Talesyntese)» er anbefalt, og NVCC er fjernet. Engelsk, svensk og dansk gjenstår.
 4. Velge lisens for Medleser (AGPL-3.0 anbefales, se THIRD_PARTY_LICENSES.md).
 5. Kodesignering av exe-filen og installasjonsfilen.
 6. Se ROADMAP.md for videre funksjoner.

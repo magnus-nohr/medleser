@@ -19,10 +19,16 @@ _LOG = logging.getLogger(__name__)
 
 class ProviderRegistry:
     def __init__(self, paths: AppPaths, secrets, *, http_transport=None) -> None:
+        from . import piper_catalog
         from .piper_provider import PiperProvider
         from .windows_provider import WindowsVoiceProvider
 
         self._providers: dict[str, TTSProvider] = {}
+        try:
+            for key in piper_catalog.remove_retired_voices(paths.piper_voices):
+                _LOG.info("Removed retired Piper voice %s", key)
+        except OSError as exc:
+            _LOG.warning("Could not remove retired Piper voices: %s", exc)
         self.register(PiperProvider(paths.piper_voices))
         self.register(WindowsVoiceProvider())
         try:

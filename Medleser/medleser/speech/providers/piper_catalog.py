@@ -69,8 +69,8 @@ _LESSAC_NOTE = (
 )
 
 CATALOG: tuple[CatalogVoice, ...] = (
-    # Recommended after listening tests (2026-10-28): Talesyntese gives clear Norwegian bokmål;
-    # the NVCC dialect voices sounded clearly worse on the same text.
+    # Talesyntese is the only Norwegian voice: in listening tests (2026-10-28) it gave clear
+    # bokmål, while the NVCC dialect voices gave unusable results and were removed.
     CatalogVoice(
         key="no_NO-talesyntese-medium",
         path="no/no_NO/talesyntese/medium/",
@@ -84,30 +84,6 @@ CATALOG: tuple[CatalogVoice, ...] = (
         json_md5="94b938e1bd319e6a084dc8380fb53619",
         recommended=True,
         gender="male",
-    ),
-    CatalogVoice(
-        key="no_NO-nvcc-medium",
-        path="no/no_NO/nvcc/medium/",
-        language="nb",
-        name="Norsk (NVCC, 10 stemmer)",
-        description="Ti norske stemmer (kvinner og menn) med ulike dialekter fra Språkbankens NVCC-materiale. Kvaliteten varierer.",
-        license="CC0 (fritt materiale fra Språkbanken, Nasjonalbiblioteket). Trent fra bunnen av.",
-        onnx_size=76770227,
-        onnx_md5="67e04e52b2f195e6db3ae103b58d1710",
-        json_size=5397,
-        json_md5="eb78dda3e46b97cb184dc6e9b91f64ea",
-        speaker_labels={
-            "KNN": "KNN",
-            "KSV": "KSV",
-            "MMN": "MMN",
-            "KON": "KON",
-            "MNN": "MNN",
-            "MSV": "MSV",
-            "MON": "MON",
-            "MNV": "MNV",
-            "KMN": "KMN",
-            "KNV": "KNV",
-        },
     ),
     CatalogVoice(
         key="en_GB-cori-medium",
@@ -190,6 +166,10 @@ CATALOG: tuple[CatalogVoice, ...] = (
 
 CATALOG_BY_KEY = {v.key: v for v in CATALOG}
 
+# Voices that earlier versions could download but that are no longer offered.
+# Their folders are deleted at startup so they do not take up space.
+RETIRED_KEYS: tuple[str, ...] = ("no_NO-nvcc-medium",)
+
 ProgressFn = Callable[[float, str], None]
 
 
@@ -225,6 +205,20 @@ def is_installed(root: Path, key: str) -> bool:
 
 def installed_keys(root: Path) -> list[str]:
     return [v.key for v in CATALOG if is_installed(root, v.key)]
+
+
+def remove_retired_voices(root: Path) -> list[str]:
+    """Delete downloaded voices that are no longer in the catalog. Returns the removed keys."""
+    removed: list[str] = []
+    resolved_root = root.resolve()
+    for key in RETIRED_KEYS:
+        target = (root / key).resolve()
+        if target.parent != resolved_root or not target.is_dir():
+            continue
+        shutil.rmtree(target, ignore_errors=True)
+        if not target.exists():
+            removed.append(key)
+    return removed
 
 
 def _md5(path: Path) -> str:

@@ -27,7 +27,7 @@ def real_voice_root():
     return Path(base) / "Medleser" / "voices" / "piper" if base else None
 
 
-NB_VOICE = "no_NO-nvcc-medium"
+NB_VOICE = "no_NO-talesyntese-medium"
 
 
 @pytest.fixture(scope="module")
@@ -51,7 +51,7 @@ def test_piper_rejects_voice_ids_outside_the_catalog(tmp_path):
 @pytest.mark.slow
 def test_piper_word_timings_cover_all_words(piper):
     text = "Studenter med dysleksi kan lytte til pensum. Medleser markerer hvert ord, også tall som 2026."
-    result = piper.synthesize(SynthesisRequest(text=text, voice_id=f"{NB_VOICE}#KNN", language="nb"))
+    result = piper.synthesize(SynthesisRequest(text=text, voice_id=NB_VOICE, language="nb"))
     assert result.precision == "word"
     spoken = [text[w.start_char:w.end_char] for w in result.words]
     assert spoken == ["Studenter", "med", "dysleksi", "kan", "lytte", "til", "pensum", "Medleser", "markerer",
@@ -79,7 +79,7 @@ def test_piper_end_to_end_document_to_mp3(piper, app_paths, tmp_path):
     assert any(s.kind == "url" for s in blocks[3].spans)
     store.save_document(pid, Document(title="Pensum", source_name="pensum.txt", source_type="txt",
                                       size_bytes=1, blocks=blocks, language="nb"))
-    store.update_settings(pid, provider="piper", voice_id=f"{NB_VOICE}#KNN", language="nb")
+    store.update_settings(pid, provider="piper", voice_id=NB_VOICE, language="nb")
 
     class Registry:
         def get(self, _):
