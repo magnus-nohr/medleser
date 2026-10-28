@@ -234,3 +234,27 @@ def test_external_links_are_allow_listed(client, monkeypatch):
     assert r.status_code == 400
     r = client.post("/api/system/open-folder", json={"target": "exported", "path": "C:\\Windows\\notepad.exe"}, headers=H)
     assert r.status_code == 400
+
+
+def test_save_mp3_dialog_uses_a_file_filter_pywebview_accepts(client, ctx, tmp_path, monkeypatch):
+    import webview
+    from webview.util import parse_file_type
+
+    pid = _make_project(ctx, tmp_path, provider="windows", voice="x")
+    ctx.store.audio_path(pid).parent.mkdir(parents=True, exist_ok=True)
+    ctx.store.audio_path(pid).write_bytes(b"ID3fake")
+    dest = tmp_path / "ut" / "Test"
+
+    class FakeWindow:
+        def create_file_dialog(self, dialog_type, directory="", save_filename="", file_types=()):
+            assert dialog_type == webview.FileDialog.SAVE
+            for file_type in file_types:
+                parse_file_type(file_type)  # raises ValueError like the real dialog
+            return str(dest)
+
+    monkeypatch.setattr(ctx, "window", FakeWindow())
+    monkeypatch.setattr(ctx, "export_dir", lambda: tmp_path / "ut")
+    r = client.post(f"/api/projects/{pid}/export", json={"mode": "single"}, headers=H)
+    assert r.status_code == 200, r.text
+    assert r.json()["saved"] == [str(dest.with_suffix(".mp3"))]
+    assert dest.with_suffix(".mp3").read_bytes() == b"ID3fake"

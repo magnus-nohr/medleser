@@ -44,6 +44,8 @@ EXTERNAL_LINKS = {
     "windows_language_settings": "ms-settings:regionlanguage",
 }
 _SAMPLE_RE = re.compile(r"^sample-[0-9a-f]{32}\.(wav|mp3)$")
+# pywebview only accepts letters, digits and spaces before the parenthesis (no hyphen).
+MP3_FILE_TYPES = ("MP3 lydfil (*.mp3)",)
 
 
 def ctx_of(request: Request) -> AppContext:
@@ -610,7 +612,7 @@ def export(request: Request, project_id: str, body: ExportBody) -> dict[str, Any
             import webview
 
             result = ctx.window.create_file_dialog(webview.FileDialog.SAVE, directory=str(export_dir),
-                                                   save_filename=suggested, file_types=("MP3-lydfil (*.mp3)",))
+                                                   save_filename=suggested, file_types=MP3_FILE_TYPES)
             if not result:
                 return {"cancelled": True}
             dest = Path(result if isinstance(result, str) else result[0])
