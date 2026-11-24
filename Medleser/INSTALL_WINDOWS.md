@@ -18,7 +18,7 @@ Valgfritt:
 
 ## Installere (for brukere)
 
-1. Dobbeltklikk på `Medleser-Setup-1.0.0.exe`.
+1. Dobbeltklikk på `Medleser-Setup-1.0.1.exe`.
 2. Følg veiviseren. Velg eventuelt «Lag snarvei på skrivebordet».
 3. Start Medleser fra Start-menyen (eller skrivebordet).
 
@@ -80,7 +80,7 @@ Krever Inno Setup 6 (`winget install -e --id JRSoftware.InnoSetup --scope user`)
 powershell -ExecutionPolicy Bypass -File scripts\build_windows.ps1
 ```
 
-Skriptet kjører testene, lager ikonet, bygger `dist\Medleser\` med PyInstaller, kjører selvtest av den ferdige `Medleser.exe` og lager `dist\Medleser-Setup-1.0.0.exe`. Bruk `-SkipTests` eller `-SkipInstaller` ved behov.
+Skriptet kjører testene, lager ikonet, bygger `dist\Medleser\` med PyInstaller, kjører selvtest av den ferdige `Medleser.exe` og lager `dist\Medleser-Setup-1.0.1.exe`. Bruk `-SkipTests` eller `-SkipInstaller` ved behov.
 
 Merk: På maskiner der PowerShell kjører i begrenset modus (*ConstrainedLanguage*, vanlig på bedriftsmaskiner), virker skriptet fordi det bare bruker tillatte kommandoer.
 

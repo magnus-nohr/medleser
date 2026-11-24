@@ -16,14 +16,14 @@ Installasjonen tar et par minutter. Du trenger ikke administratorrettigheter.
 ## 1. Last ned
 
 1. Gå til **https://github.com/magnus-nohr/medleser/releases/latest**.
-2. Under **Assets** trykker du på **Medleser-Setup-1.0.0.exe**.
+2. Under **Assets** trykker du på **Medleser-Setup-1.0.1.exe**.
 3. Filen havner i mappen **Nedlastinger**.
 
 Nettleseren kan si at filen «ikke lastes ned ofte». Velg da **Behold** (i Edge: trykk på de tre prikkene ved filen og velg **Behold**, deretter **Behold likevel**).
 
 ## 2. Installer
 
-1. Åpne mappen **Nedlastinger** og dobbeltklikk på **Medleser-Setup-1.0.0.exe**.
+1. Åpne mappen **Nedlastinger** og dobbeltklikk på **Medleser-Setup-1.0.1.exe**.
 2. Windows viser kanskje en blå boks: **«Windows beskyttet PC-en»**. Trykk da på **Flere opplysninger**, og deretter på **Kjør likevel**. Advarselen kommer fordi Medleser er et nytt program som ikke er kodesignert ennå. Den betyr ikke at det er funnet noe farlig.
 3. Les informasjonen om personvern, og trykk **Neste**.
 4. Behold mappen som er foreslått, og trykk **Neste**.

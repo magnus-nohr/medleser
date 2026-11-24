@@ -3,7 +3,8 @@
 Only voices whose training data licence allows free use are listed. Files
 are downloaded from the official Piper voice repository on Hugging Face and
 verified against the size and MD5 digest pinned below (taken from the
-repository's voices.json), so a tampered or truncated download is rejected.
+repository's voices.json at VOICES_REVISION), so a tampered or truncated
+download is rejected.
 
 After download, the model is patched so it also outputs per-phoneme
 durations (``piper.patch_voice_with_alignment``); this enables authentic
@@ -26,7 +27,12 @@ from ...errors import CancelledError, UserFacingError
 
 _LOG = logging.getLogger(__name__)
 
-BASE_URL = "https://huggingface.co/rhasspy/piper-voices/resolve/main/"
+# Pinned to one commit, never "main": voices are retrained in place there (talesyntese and
+# cori were replaced in November 2026), and then the digests below no longer match. When
+# updating, change the revision and every size/MD5 together (see
+# tests/integration/test_piper_pins_live.py) and listen to the voices again.
+VOICES_REVISION = "e7229f7d33a10e145e109b886d661984201ac3c4"  # 2026-11-02
+BASE_URL = f"https://huggingface.co/rhasspy/piper-voices/resolve/{VOICES_REVISION}/"
 MANIFEST_NAME = "medleser-voice.json"
 
 
@@ -286,6 +292,7 @@ def _download(
                     raise UserFacingError(
                         "Nedlastingen var større enn forventet og ble stoppet av sikkerhetshensyn.",
                         code="download_invalid",
+                        details=f"size>{expected_size} for {url}",
                     )
                 if progress:
                     progress(len(chunk))

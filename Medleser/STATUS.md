@@ -6,7 +6,7 @@ Sist oppdatert: 2026-10-09.
 
 Alle obligatoriske krav i oppdraget er implementert og testet: 214 automatiske tester og en uavhengig QA-gjennomgang med funn rettet (se TEST_REPORT.md). Unntaket er ekte (betalte) ElevenLabs-kall, som venter på brukerens godkjenning og nøkkel.
 
-Den ferdige installasjonsfilen ligger i `dist\Medleser-Setup-1.0.0.exe` (79 MB, bygget 2026-10-09).
+**1.0.1 (2026-11-24):** retter at den norske stemmen og Cori ikke kunne lastes ned. Koden er ferdig, 224 tester passerer, og alle sju stemmene er lastet ned, installert og prøvd fra kildekoden. Installasjonsfilen `Medleser-Setup-1.0.1.exe` er **ikke** bygget ferdig: bygget i `C:\Lydbok app` (HiØ-maskin) stopper på selvtesten fordi maskinens programkontroll (WDAC) blokkerer den usignerte `Medleser.exe`. Bygg, selvtest og GitHub-utgivelse må gjøres på den andre maskinen (`D:\Vibecoding\medleser`).
 
 | Obligatorisk krav | Status |
 |---|---|
@@ -22,7 +22,7 @@ Den ferdige installasjonsfilen ligger i `dist\Medleser-Setup-1.0.0.exe` (79 MB, 
 
 ## Versjonskontroll
 
-Git-repo (opprettet 2026-10-28, hovedgren `main`). Utviklingsmaskinene har det i `C:\Lydbok app` og `D:\Vibecoding\medleser`. Det ligger som privat repo på GitHub: https://github.com/magnus-nohr/medleser (`origin`). Forfatter er Magnus Nohr <m@hiof.no>, satt lokalt i repoet. Oppsett på en ny maskin står i INSTALL_WINDOWS.md («Jobbe på flere maskiner») og gjøres av `scripts\setup_dev.ps1`.
+Git-repo (opprettet 2026-10-28, hovedgren `main`). Utviklingsmaskinene har det i `C:\Lydbok app` og `D:\Vibecoding\medleser`. Det ligger som offentlig repo på GitHub: https://github.com/magnus-nohr/medleser (`origin`). Forfatter er Magnus Nohr <m@hiof.no>, satt lokalt i repoet. Oppsett på en ny maskin står i INSTALL_WINDOWS.md («Jobbe på flere maskiner») og gjøres av `scripts\setup_dev.ps1`.
 
 ## Miljø (utviklingsmaskinen)
 
@@ -38,6 +38,7 @@ Git-repo (opprettet 2026-10-28, hovedgren `main`). Utviklingsmaskinene har det i
 - WinRT-objekter krasjer når siste tråd i COM-MTA avsluttes. Derfor holder `winrt_support.ensure_mta()` (`CoIncrementMTAUsage`) MTA i live.
 - LAME-forsinkelsen på 1105 samples spilles av i WebView2 og kompenseres med `audio_offset` i `sync.json`.
 - ElevenLabs `eleven_multilingual_v2` støtter ikke norsk. Standard for norsk er `eleven_flash_v2_5`. Modellisten hentes fra `/v1/models`.
+- Piper-samlingen på Hugging Face bytter ut stemmer på `main` når de trenes på nytt (`cori` 12.11. og `talesyntese` 13.11.2026). Da stemte ikke MD5-summene lenger, og nedlasting feilet i 1.0.0. Nedlastingen er derfor låst til `VOICES_REVISION`. Skal en stemme oppdateres, må revisjon, størrelse og MD5 endres samlet, og stemmen lyttes gjennom på nytt. Kontroll: `pytest -m integration tests/integration/test_piper_pins_live.py`.
 - PyMuPDF er ikke trådsikkert. Bruk `documents.pdf_reader.PDF_LOCK`.
 
 ## Gjenstår / neste steg
@@ -46,5 +47,5 @@ Git-repo (opprettet 2026-10-28, hovedgren `main`). Utviklingsmaskinene har det i
 2. Teste med skjermleser (NVDA/Forteller), ekte pensumdokumenter og brukere med dysleksi.
 3. Lytte gjennom og vurdere stemmene. Norsk er gjort (2026-10-28): «Norsk (Talesyntese)» er anbefalt, og NVCC er fjernet. Engelsk, svensk og dansk gjenstår.
 4. ~~Velge lisens~~ Gjort 2026-10-28: Medleser er laget av Magnus Nohr og lisensiert under GNU AGPL-3.0-or-later (`LICENSE` i repo-roten, følger med i bygget). Vises nederst i menyen og under Innstillinger › Om Medleser.
-5. Kodesignering av exe-filen og installasjonsfilen.
+5. Kodesignering av exe-filen og installasjonsfilen. Viktigere enn før: HiØ-maskiner med programkontroll (WDAC) blokkerer usignerte programmer (sett 2026-11-24).
 6. Se ROADMAP.md for videre funksjoner.

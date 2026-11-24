@@ -2,7 +2,7 @@
 ; Build: scripts\build_windows.ps1  (or: ISCC.exe installer\medleser.iss after the PyInstaller build)
 
 #define MyAppName "Medleser"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppExeName "Medleser.exe"
 
 [Setup]

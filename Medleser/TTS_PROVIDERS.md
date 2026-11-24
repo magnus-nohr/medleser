@@ -16,7 +16,7 @@ Medleser har tre fungerende stemmetjenester bak ett felles grensesnitt. Bare tje
 
 - **Motor:** `piper-tts` 1.8.0 (OHF-Voice/piper1-gpl, GPL-3.0). Kjører på prosessoren med onnxruntime. espeak-ng følger med.
 - **Fart på utviklingsmaskinen:** syntesen gikk 7–30 ganger raskere enn sanntid etter at stemmen var lastet. Stemmen lastes på ca. 1–2 sekunder.
-- **Nedlasting:** fra den offisielle samlingen <https://huggingface.co/rhasspy/piper-voices>. Størrelse og MD5 er låst i Medleser, så en endret eller ufullstendig fil avvises.
+- **Nedlasting:** fra den offisielle samlingen <https://huggingface.co/rhasspy/piper-voices>. Adressen er låst til én bestemt utgave av samlingen (`VOICES_REVISION` i `piper_catalog.py`), og størrelse og MD5 er låst i Medleser, så en endret eller ufullstendig fil avvises. Nyeste utgave (`main`) brukes ikke, fordi stemmer der kan bli trent på nytt og byttet ut.
 - **Ordtider:** ved installasjon får stemmefilen et ekstra utdata som viser hvor mange lydsamples hver lyd (fonem) får. Dette gjøres med Pipers eget `patch_voice_with_alignment`. Tidspunktene kommer dermed fra modellen selv, med ca. 12 ms oppløsning. Kobling til ord:
   1. espeak skiller ord med mellomrom. Er antallet fonemord likt antallet tekstord, kobles de direkte.
   2. Ellers (tall, forkortelser) sammenlignes fonemstrømmen med fonemene for hvert enkelt ord. Ord uten treff får tiden mellom naboene.
