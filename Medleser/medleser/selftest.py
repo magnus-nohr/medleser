@@ -7,6 +7,7 @@ contacts paid services and does not change user data.
 from __future__ import annotations
 
 import json
+import os
 import sys
 import tempfile
 import time
@@ -89,6 +90,22 @@ def run(output: Path) -> int:
         result = provider.synthesize(SynthesisRequest(text="Dette er en test.", voice_id=voice.id, language=voice.language))
         return {"voice": voice.id, "seconds": round(result.duration, 2), "precision": result.precision}
 
+    def piper_download():
+        """Real download from the pinned Piper revision (into a temporary folder) + speech."""
+        from .speech.providers import piper_catalog
+        from .speech.providers.base import SynthesisRequest
+        from .speech.providers.piper_provider import PiperProvider
+
+        key = "no_NO-talesyntese-medium"
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
+            piper_catalog.install_voice(Path(tmp), key)
+            provider = PiperProvider(Path(tmp))
+            result = provider.synthesize(SynthesisRequest(text="Dette er en prøve på den nedlastede stemmen.",
+                                                          voice_id=key, language="nb"))
+            provider.close()
+            assert result.duration > 1.0 and result.precision == "word", result
+            return {"voice": key, "seconds": round(result.duration, 2), "precision": result.precision}
+
     def windows_voice():
         from .speech.providers.base import SynthesisRequest
         from .speech.providers.windows_provider import WindowsVoiceProvider
@@ -136,6 +153,8 @@ def run(output: Path) -> int:
     _check(results, "piper_engine", piper_engine)
     _check(results, "piper_voice", piper_voice, critical=False)
     _check(results, "windows_voice", windows_voice, critical=False)
+    if os.environ.get("MEDLESER_SELFTEST_DOWNLOAD") == "1":  # used by the release build on GitHub
+        _check(results, "piper_download", piper_download)
     _check(results, "mp3", mp3)
     _check(results, "ocr", ocr, critical=False)
     _check(results, "keyring", keyring_backend)
